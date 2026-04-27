@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
     # Database
-    DATABASE_URL: str = "postgresql+asyncpg://inboxlift:inboxlift@localhost:5432/inboxlift"
+    DATABASE_URL: str = "mysql+aiomysql://inboxlift:inboxlift@localhost:3306/inboxlift"
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20
 

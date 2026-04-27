@@ -43,7 +43,9 @@ class WarmupEmail(Base):
     recipient_esp: Mapped[str | None] = mapped_column(String(50), nullable=True)
 
     # Status tracking
-    status: Mapped[EmailStatus] = mapped_column(Enum(EmailStatus), default=EmailStatus.QUEUED)
+    status: Mapped[EmailStatus] = mapped_column(
+        Enum(EmailStatus, native_enum=False, length=50), default=EmailStatus.QUEUED
+    )
     sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     delivered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     read_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

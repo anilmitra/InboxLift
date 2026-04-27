@@ -17,8 +17,8 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Override with env var if available
-db_url = os.environ.get("DATABASE_URL", "").replace("+asyncpg", "+psycopg2")
+# Override with env var if available (async URL, e.g. mysql+aiomysql://...)
+db_url = os.environ.get("DATABASE_URL", "")
 if db_url:
     config.set_main_option("sqlalchemy.url", db_url)
 
@@ -45,7 +45,6 @@ def do_run_migrations(connection: Connection) -> None:
 
 async def run_async_migrations() -> None:
     cfg = config.get_section(config.config_ini_section, {})
-    cfg["sqlalchemy.url"] = cfg.get("sqlalchemy.url", "").replace("+asyncpg", "+psycopg2")
     connectable = async_engine_from_config(
         cfg,
         prefix="sqlalchemy.",

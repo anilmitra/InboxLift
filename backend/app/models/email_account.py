@@ -30,7 +30,7 @@ class EmailAccount(Base):
     email: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     display_name: Mapped[str] = mapped_column(String(255), nullable=True)
     provider: Mapped[EmailProvider] = mapped_column(
-        Enum(EmailProvider), default=EmailProvider.CUSTOM
+        Enum(EmailProvider, native_enum=False, length=50), default=EmailProvider.CUSTOM
     )
 
     # SMTP settings
@@ -50,7 +50,7 @@ class EmailAccount(Base):
     # Warming config
     warming_enabled: Mapped[bool] = mapped_column(Boolean, default=False)
     status: Mapped[AccountStatus] = mapped_column(
-        Enum(AccountStatus), default=AccountStatus.INACTIVE
+        Enum(AccountStatus, native_enum=False, length=50), default=AccountStatus.INACTIVE
     )
     daily_warmup_limit: Mapped[int] = mapped_column(Integer, default=50)
     ramp_up_days: Mapped[int] = mapped_column(Integer, default=30)

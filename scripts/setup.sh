@@ -24,10 +24,10 @@ if grep -q "your-secret-key" .env; then
 fi
 
 echo "Starting services..."
-docker-compose up -d postgres redis
+docker-compose up -d mysql redis
 
 echo "Waiting for database..."
-sleep 5
+sleep 10
 
 echo "Running migrations..."
 docker-compose run --rm backend alembic upgrade head

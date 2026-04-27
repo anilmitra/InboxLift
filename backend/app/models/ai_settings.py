@@ -20,7 +20,9 @@ class AISettings(Base):
     user_id: Mapped[int | None] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True
     )
-    provider: Mapped[AIProvider] = mapped_column(Enum(AIProvider), default=AIProvider.OPENAI)
+    provider: Mapped[AIProvider] = mapped_column(
+        Enum(AIProvider, native_enum=False, length=50), default=AIProvider.OPENAI
+    )
     model: Mapped[str] = mapped_column(String(100), default="gpt-4o-mini")
     api_key_encrypted: Mapped[str | None] = mapped_column(Text, nullable=True)
     temperature: Mapped[float] = mapped_column(Float, default=0.8)
