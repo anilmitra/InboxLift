@@ -1,0 +1,56 @@
+# Core
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.18
+
+# Database
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
+psycopg2-binary==2.9.10
+
+# Cache & Queue
+redis==5.2.0
+celery==5.4.0
+flower==2.0.1
+
+# Auth & Security
+python-jose[cryptography]==3.3.0
+bcrypt==4.2.1
+cryptography==43.0.3
+
+# Email
+aiosmtplib==3.0.2
+aioimaplib==2.0.1
+
+# AI
+openai==1.57.0
+anthropic==0.40.0
+
+# Validation & Config
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+email-validator==2.2.0
+
+# HTTP
+httpx==0.28.1
+aiohttp==3.11.10
+
+# Utils
+python-dateutil==2.9.0
+pytz==2024.2
+tenacity==9.0.0
+structlog==24.4.0
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
+httpx==0.28.1
+factory-boy==3.3.1
+faker==33.1.0
+
+# Dev
+ruff==0.8.4
+mypy==1.13.0
